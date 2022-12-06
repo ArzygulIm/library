@@ -1,0 +1,174 @@
+#auth,
+#reg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth_reg_box {
+    position: relative;
+    width: 380px;
+    height: 350px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 380px;
+        height: 420px;
+        background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+        top: -66%;
+        left: -50%;
+        transform-origin: bottom right;
+        animation: animate 6s linear infinite;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 380px;
+        height: 420px;
+        background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+        top: -66%;
+        left: -50%;
+        transform-origin: bottom right;
+        animation: animate 6s linear infinite;
+        animation-delay: -3s;
+    }
+}
+
+.auth_reg_form {
+    position: absolute;
+    z-index: 10;
+    background: #28292d;
+    inset: 2px;
+    border-radius: 6px;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        color: #45f3ff;
+        font-weight: 500;
+        text-align: center;
+        letter-spacing: 1.6px;
+    }
+}
+
+.links {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+        font-size: 16px;
+        text-decoration: none;
+        color: #45f3ff;
+    }
+
+    button {
+        border: none;
+        outline: none;
+        background: #45f3ff;
+        padding: 11px 25px;
+        font-size: 16px;
+        width: 100px;
+        margin-top: 10px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:active {
+            opacity: 0.8;
+        }
+    }
+}
+
+.reg_box {
+    height: 500px;
+
+    &::before {
+        top: -30%;
+    }
+
+    &::after {
+        top: -30%;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+}
+
+.inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+
+    input {
+        position: relative;
+        width: 100%;
+        padding: 20px 10px 10px;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #23242a;
+        font-style: 16px;
+        letter-spacing: 0.8px;
+        z-index: 10;
+
+        &:focus~span {
+            color: #45f3ff;
+            transform: translateX(-10px) translateY(-34px);
+            font-size: 12px;
+        }
+
+        &:focus~i {
+            height: 44px;
+            z-index: 9;
+        }
+    }
+
+    span {
+        position: absolute;
+        left: 0;
+        font-size: 16px;
+        padding: 20px 10px 10px;
+        color: #8f8f8f;
+        pointer-events: none;
+        letter-spacing: 0.8px;
+        transition: 0.5s;
+    }
+
+    i {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: #45f3ff;
+        border-radius: 4px;
+        transition: 0.5s;
+        pointer-events: none;
+    }
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

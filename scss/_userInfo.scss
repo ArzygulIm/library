@@ -1,0 +1,61 @@
+.user__info {
+    position: relative;
+
+    &__backdrop {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        display: none;
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+    }
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    padding: 8px 10px 10px 6px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background-color: #45f3ff;
+    font-size: 25px;
+    font-weight: bold;
+    color: #23242a;
+    font-family: 'Fleur De Leah', cursive;
+}
+
+.user__dropdown {
+    display: none;
+    opacity: 0;
+    transition: 0.5s;
+    position: absolute;
+    right: 0px;
+    top: 60px;
+    width: 200px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 1px solid #45f3ff;
+    background-color: #23242a;
+    color: aliceblue;
+    row-gap: 10px;
+    z-index: 5;
+
+    h6 {
+        font-size: 15px;
+    }
+
+    button {
+        padding: 5px;
+        cursor: pointer;
+        border: 1px solid #45f3ff;
+        border-radius: 5px;
+        background-color: transparent;
+        color: aliceblue;
+    }
+}
+
+.show-dropdown {
+    display: flex;
+    opacity: 1;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="user__info__backdrop"></div>
+        <div class="container">
+            <div class="header__wrap flex flex-jc-sb flex-ai-c">
+                <div class="logo">Library</div>
+                <div class="favoriteLink">Favorites</div>
+                <div class="flex flex-ai-c">
+                    <div class="inputBox">
+                        <input type="text" required="required" id="searchInput">
+                        <span class="searchInput__title">Search</span>
+                        <i class="searchInput__i"></i>
+                    </div>
+                    <div class="user__info">
+                        <div class="avatar">
+
+                        </div>
+                        <div class="user__dropdown flex flex-fd-c">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section id="books">
+        <div class="container">
+            <div class="books__wrap">
+
+            </div>
+        </div>
+    </section>
+
+    <section id="add-modal">
+        <div class="add__backdrop"></div>
+        <div class="add-modal">
+            <div class="add-modal-inner">
+                <button class="add__close-btn">x</button>
+                <form id="add__modal-form">
+                    <div class="inputBox">
+                        <input type="text" required="required" id="add-name">
+                        <span class="add-name__title">Name *</span>
+                        <i class="add-name__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" required="required" id="add-author">
+                        <span class="add-author__title">Author *</span>
+                        <i class="add-author__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="url" id="add-img">
+                        <span class="add-img__title">Image URL</span>
+                        <i class="add-img__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="number" id="add-publishYear">
+                        <span class="add-publishYear__title">Publish Year</span>
+                        <i class="add-publishYear__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="add-publishHouse">
+                        <span class="add-publishHouse__title">Publish House</span>
+                        <i class="add-publishHouse__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="number" id="add-pagesNumber">
+                        <span class="add-pagesNumber__title">Pages Number</span>
+                        <i class="add-pagesNumber__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="add-genres">
+                        <span class="add-genres__title">Genres <span class="genres__description">Write genres separating
+                                with symbol ","</span></span>
+                        <i class="add-genres__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="add-originalLanguage">
+                        <span class="add-originalLanguage__title">Original Language</span>
+                        <i class="add-originalLanguage__i"></i>
+                    </div>
+
+                    <button type="submit">Add Book</button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="edit-modal">
+        <div class="edit__backdrop"></div>
+        <div class="edit-modal">
+            <div class="edit-modal-inner">
+                <button class="edit__close-btn">x</button>
+                <div id="edit__modal-form">
+                    <div class="inputBox">
+                        <input type="text" id="edit-name">
+                        <span class="edit-name__title">Name *</span>
+                        <i class="edit-name__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="edit-author">
+                        <span class="edit-author__title">Author *</span>
+                        <i class="edit-author__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="url" id="edit-img">
+                        <span class="edit-img__title">Image URL</span>
+                        <i class="edit-img__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="number" id="edit-publishYear">
+                        <span class="edit-publishYear__title">Publish Year</span>
+                        <i class="edit-publishYear__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="edit-publishHouse">
+                        <span class="edit-publishHouse__title">Publish House</span>
+                        <i class="edit-publishHouse__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="number" id="edit-pagesNumber">
+                        <span class="edit-pagesNumber__title">Pages Number</span>
+                        <i class="edit-pagesNumber__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="edit-genres">
+                        <span class="edit-genres__title">Genres <span class="genres__description">Write genres
+                                separating with symbol ","</span></span>
+                        <i class="edit-genres__i"></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" id="edit-originalLanguage">
+                        <span class="edit-originalLanguage__title">Original Language</span>
+                        <i class="edit-originalLanguage__i"></i>
+                    </div>
+
+                    <button id="editBtn">Edit Book</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="details-modal">
+        <div class="details__backdrop"></div>
+        <div class="details-modal">
+            <div class="details-modal-inner">
+                <button class="details__close-btn">Back</button>
+                <div class="details__box flex">
+                    <img class="details__box-img" src="" alt="">
+                    <div class="details__box-text flex flex-fd-c">
+                        <h5 class="details__box-name"></h5>
+                        <h6 class="details__box-author"></h6>
+                        <p class="details__box-originalLanguage"></p>
+                        <p class="details__box-publishHouse"></p>
+                        <p class="details__box-publishYear"></p>
+                        <p class="details__box-pagesNumber"></p>
+                        <div class="genres__wrap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/inputScripts.js"></script>
+</body>
+
+</html>

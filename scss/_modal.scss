@@ -1,0 +1,205 @@
+.add__backdrop,
+.edit__backdrop,
+.details__backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 11;
+}
+
+.backdropActive {
+    display: block;
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.modalButton {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    cursor: pointer;
+    width: 140px;
+    text-align: center;
+}
+
+.add-modal,
+.edit-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 500px;
+    height: 620px;
+    background: #23242a;
+    box-shadow: 0px 10px 38px -4px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    transition: transform 0.4s;
+    transform: scale(0);
+    z-index: 12;
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    .inputBox {
+        margin-top: 20px;
+    }
+
+    .genres__description {
+        width: max-content;
+        font-size: 12px;
+        left: 80px;
+        bottom: -34px;
+        display: none;
+    }
+
+    #add-genres {
+        &:focus~span {
+            .genres__description {
+                display: inline;
+                color: #45f3ff;
+                transform: translateX(-10px) translateY(-34px);
+            }
+        }
+    }
+
+    #edit-genres {
+        &:focus~span {
+            .genres__description {
+                display: inline;
+                color: #45f3ff;
+                transform: translateX(-10px) translateY(-34px);
+            }
+        }
+    }
+
+    button {
+        border: none;
+        outline: none;
+        background: #45f3ff;
+        padding: 11px 25px;
+        font-size: 16px;
+        width: 200px;
+        margin-top: 10px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:active {
+            opacity: 0.8;
+        }
+    }
+
+    .add__close-btn,
+    .edit__close-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        padding: 10px;
+        font-family: 'Fredoka One';
+    }
+}
+
+.add-modal-inner,
+.edit-modal-inner {
+    color: #000000;
+}
+
+.details {
+    &-modal {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        width: 700px;
+        height: 400px;
+        background: white;
+        box-shadow: 0px 10px 38px -4px rgba(0, 0, 0, 0.06);
+        border-radius: 10px;
+        transition: transform 0.4s;
+        transform: scale(0);
+        z-index: 12;
+    }
+
+    &__close-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        height: 20px;
+        padding: 10px;
+        font-family: 'Fredoka One';
+    }
+
+    &__box {
+        padding: 20px;
+
+        img {
+            height: 360px;
+            object-fit: contain;
+        }
+
+        &-text {
+            padding: 30px 20px;
+            row-gap: 10px;
+
+            h5 {
+                font-size: 20px;
+            }
+            h6{
+                font-size: 18px;
+            }
+            p{
+                font-size: 18px;
+                span{
+                    font-weight: bold;
+                }
+            }
+
+            .genres__wrap{
+                font-weight: bold;
+                font-size: 18px;
+                span{
+                    
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
+
+
+.modalActive {
+    transform: scale(1);
+}

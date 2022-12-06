@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #23242a;
+    font-family: 'Acme', sans-serif;
+}
+
+button{
+    font-family: 'Concert One', cursive;
+}
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -25px;
+    row-gap: 40px;
+}
+
+.col-1 {
+    width: 8.33%;
+    padding: 0 25px;
+}
+
+.col-2 {
+    width: 16.66666%;
+    padding: 0 25px;
+}
+
+.col-3 {
+    width: 25%;
+    padding: 0 25px;
+}
+
+.col-4 {
+    width: 33.33333%;
+    padding: 0 25px;
+}
+
+.col-5 {
+    width: 41.6666666%;
+    padding: 0 25px;
+}
+
+.col-6 {
+    width: 50%;
+    padding: 0 25px;
+}
+
+.col-7 {
+    width: 58.3333%;
+    padding: 0 25px;
+}
+
+.col-8 {
+    width: 66.66666%;
+    padding: 0 25px;
+}
+
+.col-9 {
+    width: 75%;
+    padding: 0 25px;
+}
+
+.col-10 {
+    width: 83.3333%;
+    padding: 0 25px;
+}
+
+.col-11 {
+    width: 91.66666%;
+    padding: 0 25px;
+}
+
+.col-12 {
+    width: 100%;
+    padding: 0 25px;
+}
+
