@@ -11,8 +11,7 @@ const getAllBooks = async () => {
             },
         })
     const res = await req.json()
-    console.log(document.getElementById('filterSelect').value)
-    let array = document.getElementById('filterSelect').value === "name"? res.sort((a, b) => a.name.localeCompare(b.name)):res.sort((a, b) => a.author.localeCompare(b.author))
+    let array = document.getElementById('filterSelect').value === "name"? await res.sort((a, b) => a.name.localeCompare(b.name)):await res.sort((a, b) => a.author.localeCompare(b.author))
     
     console.log(array)
     renderAllBooks(array)
@@ -28,7 +27,7 @@ const getFavoriteBooks = async () => {
             },
         })
     const res = await req.json()
-    let favorites = res.filter(el => el.isFavorite === true)
+    let favorites = await res.filter(el => el.isFavorite === true)
     renderAllBooks(favorites)
 }
 
