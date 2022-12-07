@@ -11,6 +11,7 @@ body {
 
 button {
   font-family: "Concert One", cursive;
+  cursor: pointer;
 }
 
 .container {
@@ -111,12 +112,14 @@ header .inputBox {
 .favoriteLink {
   margin: 40px 0 0 0;
   color: aliceblue;
+  cursor: pointer;
 }
 
 .logo {
   font-family: "Niconne", cursive;
   color: aliceblue;
   font-size: 50px;
+  cursor: pointer;
 }
 
 .user__info {
@@ -185,7 +188,6 @@ header .inputBox {
   margin: 0 auto;
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
 }
 .books__box .imgBx {
   position: absolute;
@@ -230,7 +232,7 @@ header .inputBox {
   font-size: 16px;
   color: #f38695;
   display: block;
-  margin-top: 5px;
+  margin: 5px;
 }
 .books__box .favorites {
   position: absolute;
@@ -268,6 +270,9 @@ header .inputBox {
   -o-object-fit: contain;
      object-fit: contain;
   margin-right: 5px;
+}
+.books__box .more {
+  cursor: pointer;
 }
 
 .add__backdrop,

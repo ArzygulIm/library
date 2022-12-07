@@ -19,12 +19,12 @@ const getFavoriteBooks = async () => {
             },
         })
     const res = await req.json()
-    let favorites = res.filter(el=> el.isFavorite === true)
+    let favorites = res.filter(el => el.isFavorite === true)
     renderAllBooks(favorites)
 }
 
-document.querySelector(".favoriteLink").addEventListener('click',getFavoriteBooks)
-document.querySelector('.logo').addEventListener('click',getAllBooks)
+document.querySelector(".favoriteLink").addEventListener('click', getFavoriteBooks)
+document.querySelector('.logo').addEventListener('click', getAllBooks)
 const renderAllBooks = (data) => {
     output.innerHTML = ''
     const row = document.createElement('div')
@@ -50,6 +50,7 @@ const renderAllBooks = (data) => {
         btnWrap.className = "books__box-button__wrap flex flex-jc-sb"
         deleteBtn.className = "flex flex-ai-c"
         editBtn.className = "flex flex-ai-c"
+        more.className = "more"
 
         imgBox.innerHTML = `<img src=${el.img} alt="">`
         favorites.innerHTML = `&#10084`
@@ -58,7 +59,7 @@ const renderAllBooks = (data) => {
         editBtn.innerHTML = `<img src="../images/editing.png" alt=""> <span>Edit</span>`
         more.textContent = "See details..."
 
-        details.append(favorites, detailsText,more)
+        details.append(favorites, detailsText, more)
         btnWrap.append(deleteBtn, editBtn)
         box.append(imgBox, details, btnWrap)
 
@@ -82,15 +83,15 @@ const renderAllBooks = (data) => {
             getBookDetails(el.id)
         })
 
-        favorites.addEventListener('click',()=>{
+        favorites.addEventListener('click', () => {
             changeFavorites(el.id, el.isFavorite)
         })
     })
     output.append(row)
 }
 // export {renderAllBooks};
-const changeFavorites = async (id,favorite) => {
-    let data = {isFavorite: !favorite}
+const changeFavorites = async (id, favorite) => {
+    let data = { isFavorite: !favorite }
     editBookAsync(data, id)
 }
 
