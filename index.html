@@ -22,7 +22,7 @@
         <div class="container">
             <div class="header__wrap flex flex-jc-sb flex-ai-c">
                 <div class="logo">Library</div>
-                <div class="favoriteLink">Favorites</div>
+                <a class="favoriteLink">Favorites</a>
                 <div class="flex flex-ai-c">
                     <div class="inputBox">
                         <input type="text" required="required" id="searchInput">
@@ -56,7 +56,7 @@
         <div class="add-modal">
             <div class="add-modal-inner">
                 <button class="add__close-btn">x</button>
-                <form id="add__modal-form">
+                <div id="add__modal-form">
                     <div class="inputBox">
                         <input type="text" required="required" id="add-name">
                         <span class="add-name__title">Name *</span>
@@ -99,9 +99,9 @@
                         <i class="add-originalLanguage__i"></i>
                     </div>
 
-                    <button type="submit">Add Book</button>
+                    <button type="submit" id="add-book">Add Book</button>
 
-                </form>
+                </div>
             </div>
         </div>
     </section>
