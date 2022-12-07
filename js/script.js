@@ -108,7 +108,6 @@ const renderAllBooks = (data) => {
 const changeFavorites = async (id, favorite) => {
     let data = { isFavorite: !favorite }
     editBookAsync(data, id)
-    renderAllBooks()
 }
 
 
@@ -190,6 +189,7 @@ async function editBookAsync(data, id) {
             body: JSON.stringify(data)
         })
     const res = await req.json()
+    renderAllBooks()
 }
 const getUserInfo = async () => {
     const req = await fetch("http://localhost:1717/me",
