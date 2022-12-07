@@ -1,0 +1,17 @@
+.filters{
+    padding: 10px 0;
+
+    select{
+        border: none;
+        outline: none;
+        padding: 5px;
+        background: transparent;
+        color: #45f3ff;
+        cursor: pointer;
+        margin-left: 25px;
+        option{
+            color: #23242a;
+            height: 50px;
+        }
+    }
+}

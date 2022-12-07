@@ -98,19 +98,22 @@ button {
 .flex-jc-c {
   justify-content: center;
 }
+.flex-jc-fe {
+  justify-content: flex-end;
+}
 .flex-ai-c {
   align-items: center;
 }
 
 header {
-  padding: 10px 0;
+  padding: 20px 0;
 }
 header .inputBox {
   margin: 0 20px 0 0;
 }
 
 .favoriteLink {
-  margin: 40px 0 0 0;
+  margin: 20px 0 0 0;
   color: aliceblue;
   cursor: pointer;
 }
@@ -181,6 +184,23 @@ header .inputBox {
   opacity: 1;
 }
 
+.filters {
+  padding: 10px 0;
+}
+.filters select {
+  border: none;
+  outline: none;
+  padding: 5px;
+  background: transparent;
+  color: #45f3ff;
+  cursor: pointer;
+  margin-left: 25px;
+}
+.filters select option {
+  color: #23242a;
+  height: 50px;
+}
+
 .books__box {
   position: relative;
   height: 400px;
@@ -227,12 +247,12 @@ header .inputBox {
   color: #777;
   text-transform: uppercase;
 }
-.books__box .details h2 span {
+.books__box .details h3 {
   font-weight: 500;
   font-size: 16px;
   color: #f38695;
-  display: block;
   margin: 5px;
+  text-transform: uppercase;
 }
 .books__box .favorites {
   position: absolute;
@@ -638,6 +658,21 @@ header .inputBox {
     transform: rotate(360deg);
   }
 }
+.not__found {
+  row-gap: 10px;
+  font-size: 15px;
+}
+.not__found p, .not__found div {
+  color: aliceblue;
+}
+.not__found button {
+  margin-left: 10px;
+  border: none;
+  color: #45f3ff;
+  background: transparent;
+  font-size: 15px;
+}
+
 #books {
-  padding: 150px 0;
+  padding: 20px 0;
 }/*# sourceMappingURL=style.css.map */

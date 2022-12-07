@@ -1,6 +1,9 @@
-const output = document.querySelector(".books__wrap") || document.querySelector(".favorites__books__wrap")
+const output = document.querySelector(".output")
+const searchInput = document.getElementById("searchInput")
 
 const getAllBooks = async () => {
+    document.querySelector(".filters").style.display = "flex"
+    searchInput.value = ""
     const req = await fetch("http://localhost:1717/books",
         {
             headers: {
@@ -8,9 +11,15 @@ const getAllBooks = async () => {
             },
         })
     const res = await req.json()
-    renderAllBooks(res)
+    console.log(document.getElementById('filterSelect').value)
+    let array = document.getElementById('filterSelect').value === "name"? res.sort((a, b) => a.name.localeCompare(b.name)):res.sort((a, b) => a.author.localeCompare(b.author))
+    
+    console.log(array)
+    renderAllBooks(array)
 }
 getAllBooks()
+
+document.getElementById('filterSelect').addEventListener('change', getAllBooks)
 const getFavoriteBooks = async () => {
     const req = await fetch("http://localhost:1717/books",
         {
@@ -23,7 +32,10 @@ const getFavoriteBooks = async () => {
     renderAllBooks(favorites)
 }
 
-document.querySelector(".favoriteLink").addEventListener('click', getFavoriteBooks)
+document.querySelector(".favoriteLink").addEventListener('click',()=>{
+    searchInput.value = ""
+    getFavoriteBooks()
+} )
 document.querySelector('.logo').addEventListener('click', getAllBooks)
 const renderAllBooks = (data) => {
     output.innerHTML = ''
@@ -36,7 +48,8 @@ const renderAllBooks = (data) => {
         const imgBox = document.createElement('div')
         const details = document.createElement('div')
         const favorites = document.createElement('p')
-        const detailsText = document.createElement('h2')
+        const detailsName = document.createElement('h2')
+        const detailsAuthor = document.createElement('h3')
         const btnWrap = document.createElement('div')
         const deleteBtn = document.createElement('button')
         const editBtn = document.createElement('button')
@@ -52,14 +65,16 @@ const renderAllBooks = (data) => {
         editBtn.className = "flex flex-ai-c"
         more.className = "more"
 
-        imgBox.innerHTML = `<img src=${el.img} alt="">`
+        imgBox.innerHTML = `<img src=${el.img?el.img:"./images/cover-not.png"} alt="">`
         favorites.innerHTML = `&#10084`
-        detailsText.innerHTML = `${el.name}<br><span>${el.author}</span>`
+
+        detailsName.textContent = el.name.lenght > 20 ? `${el.name.slice(0, 17)}...` : `${el.name}`
+        detailsAuthor.textContent = el.author.lenght > 20 ? `by: ${el.author.slice(0, 17)}...` : `by: ${el.author}`
         deleteBtn.innerHTML = `<img src="../images/delete.png" alt=""> <span>Delete</span>`
         editBtn.innerHTML = `<img src="../images/editing.png" alt=""> <span>Edit</span>`
         more.textContent = "See details..."
 
-        details.append(favorites, detailsText, more)
+        details.append(favorites, detailsName, detailsAuthor, more)
         btnWrap.append(deleteBtn, editBtn)
         box.append(imgBox, details, btnWrap)
 
@@ -89,7 +104,7 @@ const renderAllBooks = (data) => {
     })
     output.append(row)
 }
-// export {renderAllBooks};
+
 const changeFavorites = async (id, favorite) => {
     let data = { isFavorite: !favorite }
     editBookAsync(data, id)
@@ -149,10 +164,9 @@ const editBook = (id) => {
         data.img = document.getElementById('edit-img').value
     }
 
-    console.log(data)
-    console.log(id)
-
     editBookAsync(data, id)
+    toggleEditModal()
+    getAllBooks()
 
     document.getElementById('edit-name').value = ''
     document.getElementById('edit-author').value = ''
@@ -184,7 +198,6 @@ const getUserInfo = async () => {
             },
         })
     const res = await req.json()
-    console.log(res)
     renderUserInfo(res)
 }
 getUserInfo()
@@ -223,6 +236,22 @@ const renderUserInfo = (data) => {
         window.location.href = "./pages/auth/auth.html"
     })
 }
+
+async function addBook(data) {
+    const req = await fetch("http://localhost:1717/books/create",
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Auth': localStorage.getItem('token')
+            },
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+    console.log(req)
+    const res = await req.json()
+    getAllBooks()
+}
+
 const addBtn = document.getElementById('add-book')
 
 addBtn.addEventListener('click', (e) => {
@@ -266,24 +295,10 @@ addBtn.addEventListener('click', (e) => {
         if (document.getElementById('add-img').value != "") {
             data.img = document.getElementById('add-img').value
         }
-        console.log(data)
 
         addBook(data)
-        async function addBook(data) {
-            const req = await fetch("http://localhost:1717/books/create",
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Auth': localStorage.getItem('token')
-                    },
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                })
-            console.log(req)
-            const res = await req.json()
-            console.log(res)
-            getAllBooks()
-        }
+        toggleModal()
+        getAllBooks()
 
         document.getElementById('add-name').value = ''
         document.getElementById('add-author').value = ''
@@ -356,12 +371,13 @@ const renderBookDetails = (data) => {
         genresWrap.append(genre)
     })
 }
-const searchInput = document.getElementById("searchInput")
+
 searchInput.addEventListener('input', () => {
     searchBooks(searchInput.value)
 })
 const searchBooks = async (value) => {
     if (value.length > 0) {
+        document.querySelector(".filters").style.display = "none"
         let array = []
         let request = await fetch("http://localhost:1717/books",
             {
@@ -373,18 +389,38 @@ const searchBooks = async (value) => {
         response?.map(el => {
             el?.name?.toLowerCase().includes(value.toLowerCase()) === true ? array.push(el) : null
         })
+        response?.map(el => {
+            el?.author?.toLowerCase().includes(value.toLowerCase()) === true ? array.push(el) : null
+        })
         output.innerHTML = ""
         if (array.length > 0) {
             renderAllBooks(array)
         }
         else {
-            response?.map(el => {
-                el?.author?.toLowerCase().includes(value.toLowerCase()) === true ? array.push(el) : null
-            })
+            const notFoundPage = document.createElement("div")
+            const img = document.createElement("img")
+            const textWrap = document.createElement("div")
+            const text1 = document.createElement("p")
+            const addBtn = document.createElement("button")
+            const text2 = document.createElement("p")
+
+            notFoundPage.className = "not__found flex flex-jc-c flex-ai-c flex-fd-c"
+
+            img.src = "../images/spongebob.gif"
+            text1.textContent = "The whole team was looking for this book, but not found"
+            textWrap.textContent = "If you know the name and author, you can add this book"
+            addBtn.textContent = "Add book"
+            text2.textContent = "or try to search another book"
+            textWrap.append(addBtn)
+
+            notFoundPage.append(img, text1, textWrap, text2)
+            output.append(notFoundPage)
+
+            addBtn.addEventListener('click',toggleModal)
         }
     }
     else {
-        location.reload()
+        getAllBooks()
     }
 }
 
