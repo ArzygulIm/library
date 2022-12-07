@@ -21,8 +21,6 @@ const auth = async (e) => {
         })
 
         const res = await req.json()
-        console.log(req)
-        console.log(res)
         if (res.token) {
             localStorage.setItem('token', res.token)
             window.location.href = '../../index.html'

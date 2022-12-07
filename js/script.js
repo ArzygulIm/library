@@ -108,6 +108,7 @@ const renderAllBooks = (data) => {
 const changeFavorites = async (id, favorite) => {
     let data = { isFavorite: !favorite }
     editBookAsync(data, id)
+    renderAllBooks()
 }
 
 
