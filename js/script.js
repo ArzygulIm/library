@@ -190,7 +190,7 @@ async function editBookAsync(data, id) {
             body: JSON.stringify(data)
         })
     const res = await req.json()
-    renderAllBooks()
+    getAllBooks()
     console.log(res)
 }
 const getUserInfo = async () => {
