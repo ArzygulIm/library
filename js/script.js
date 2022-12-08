@@ -302,7 +302,7 @@ addBtn.addEventListener('click', (e) => {
         addBook(data)
         toggleModal()
         getAllBooks()
-        dropdown.classList.remove('show-dropdown')
+        document.querySelector(".user__dropdown").classList.remove('show-dropdown')
         document.querySelector('.user__info__backdrop').classList.remove("backdropActive")
 
         document.getElementById('add-name').value = ''
